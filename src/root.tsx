@@ -1,11 +1,12 @@
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import {SearchBar} from "./components/search-bar.tsx";
 
 export const Root = (): ReactElement => {
+    const [searchValue, setSearchValue] = useState("");
     return (
         <div>
             <div id="sidebar">
-                <SearchBar />
+                <SearchBar value={searchValue} />
                 <nav>
                     <ul>
                         <li>

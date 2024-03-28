@@ -1,27 +1,15 @@
 import {ReactElement} from "react";
 
-export const SearchBar = (): ReactElement => {
+type ISearchBar = {
+    value: string;
+    onChange: () => void;
+}
+
+export const SearchBar = ({ value, onChange }: ISearchBar): ReactElement => {
 
     return (
-        <div>
-            <form id="search-form" role="search">
-                <input
-                    id="q"
-                    aria-label="Search contacts"
-                    placeholder="Search"
-                    type="search"
-                    name="q"
-                />
-                <div
-                    id="search-spinner"
-                    aria-hidden
-                    hidden={true}
-                />
-                <div
-                    className="sr-only"
-                    aria-live="polite"
-                ></div>
-            </form>
+        <div className={"bg-amber-400"}>
+            <input type="text" placeholder={"Search"} onChange={onChange} value={value} />
         </div>
     )
 }
