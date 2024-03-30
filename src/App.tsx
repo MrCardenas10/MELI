@@ -3,6 +3,7 @@ import {Root} from "./root.tsx";
 import {ErrorPage} from "./components/error-page.tsx";
 import {ProductDetail} from "./components/product-detail.tsx";
 import {ProductsList} from "./components/products-list.tsx";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 function App() {
     const router = createBrowserRouter([
@@ -25,8 +26,18 @@ function App() {
         },
     ]);
 
-  return (
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                staleTime: 2000,
+            },
+        },
+    })
+
+    return (
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+      </QueryClientProvider>
   )
 }
 

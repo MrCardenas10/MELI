@@ -1,5 +1,4 @@
 import {Dispatch, ReactElement, SetStateAction} from "react";
-import {Button} from "./button.tsx";
 import {IconSearch} from "../assets/icons/icon-search.tsx";
 import {createSearchParams, useNavigate} from "react-router-dom";
 
@@ -21,7 +20,8 @@ export const SearchBar = ({ value, setValue }: ISearchBar): ReactElement => {
     }
 
     const goHome = () => {
-        navigate("/")
+        navigate("/");
+        setValue("");
     }
 
     return (
