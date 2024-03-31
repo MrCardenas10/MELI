@@ -1,9 +1,11 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Root} from "./root.tsx";
 import {ErrorPage} from "./components/error-page.tsx";
-import {ProductDetail} from "./components/product-detail.tsx";
-import {ProductsList} from "./components/products-list.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {lazy, Suspense} from "react";
+
+const ProductsList = lazy(() => import('./components/products-list.tsx'));
+const ProductDetail = lazy(() => import('./components/product-detail.tsx'));
 
 function App() {
     const router = createBrowserRouter([
@@ -36,7 +38,13 @@ function App() {
 
     return (
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+          <Suspense fallback={
+              <div className={"w-full h-full flex justify-center items-center"}>
+                <span className={"text-5xl font-semibold italic animate-pulse"}>Loading...</span>
+              </div>
+          }>
+            <RouterProvider router={router} />
+          </Suspense>
       </QueryClientProvider>
   )
 }

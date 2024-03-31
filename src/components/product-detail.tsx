@@ -5,7 +5,7 @@ import {useGetProductDetail} from "../services";
 import {Skeleton} from "./skeleton.tsx";
 import {useParams} from "react-router-dom";
 
-export const ProductDetail = (): ReactElement => {
+const ProductDetail = (): ReactElement => {
     const {id } = useParams();
     const { data, isLoading } = useGetProductDetail(id ?? "");
 
@@ -43,4 +43,6 @@ export const ProductDetail = (): ReactElement => {
             </div>
         </Fragment>
     )
-}
+};
+
+export default ProductDetail
