@@ -5,7 +5,7 @@ import {useGetProductList} from "../services";
 import {Skeleton} from "./skeleton.tsx";
 import {BreadCrumbs} from "./bread-crumbs.tsx";
 
-export const ProductsList = (): ReactElement => {
+const ProductsList = (): ReactElement => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const searchUrlValue = useMemo(
@@ -74,3 +74,5 @@ export const ProductsList = (): ReactElement => {
       </Fragment>
   );
 };
+
+export default ProductsList
